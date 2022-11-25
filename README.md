@@ -56,7 +56,7 @@ shell:> store key value
 ```
 
 ```
-shell:> lookup key value
+shell:> lookup key
 ```
 
 ### Stopping application
