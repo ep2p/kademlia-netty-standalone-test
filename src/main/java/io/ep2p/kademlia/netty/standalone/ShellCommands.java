@@ -1,7 +1,6 @@
 package io.ep2p.kademlia.netty.standalone;
 
 import io.ep2p.kademlia.NodeSettings;
-import io.ep2p.kademlia.exception.DuplicateStoreRequest;
 import io.ep2p.kademlia.model.LookupAnswer;
 import io.ep2p.kademlia.model.StoreAnswer;
 import io.ep2p.kademlia.netty.NettyKademliaDHTNode;
@@ -39,7 +38,8 @@ public class ShellCommands {
                 new BigInteger(id),
                 new NettyConnectionInfo(host, port),
                 new SampleRepository(),
-                new ShellKeyHashGenerator()
+                new ShellKeyHashGenerator(),
+                String.class, String.class
         ).build();
 
         if (!bootstrapNodeAddress.equals("none")){
@@ -67,14 +67,14 @@ public class ShellCommands {
     }
 
     @ShellMethod(value = "Stores data into DHT")
-    public String store(String key, String value) throws DuplicateStoreRequest, ExecutionException, InterruptedException {
-        StoreAnswer<BigInteger, String> storeAnswer = this.applicationContext.getNode().store(key, value).get();
-        return String.format("Store result: %s - Node: %s%n", storeAnswer.getResult(), storeAnswer.getNodeId());
+    public String store(String key, String value) throws ExecutionException, InterruptedException {
+        StoreAnswer<BigInteger, NettyConnectionInfo, String> storeAnswer = this.applicationContext.getNode().store(key, value).get();
+        return String.format("Store result: %s - Node: %s%n", storeAnswer.getResult(), storeAnswer.getNode().getId());
     }
 
     @ShellMethod(value = "Looks up data from DHT")
     public String lookup(String key) throws ExecutionException, InterruptedException {
-        LookupAnswer<BigInteger, String, String> lookupAnswer = this.applicationContext.getNode().lookup(key).get();
+        LookupAnswer<BigInteger, NettyConnectionInfo, String, String> lookupAnswer = this.applicationContext.getNode().lookup(key).get();
         return String.format("Lookup result: %s - Value: %s%n", lookupAnswer.getResult(), lookupAnswer.getValue());
     }
 

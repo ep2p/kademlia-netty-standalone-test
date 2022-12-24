@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.ep2p</groupId>
     <artifactId>kademlia-netty-standalone-test</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>kademlia-netty-standalone-test</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>io.ep2p</groupId>
             <artifactId>kademlia-netty</artifactId>
-            <version>0.1.7-RELEASE</version>
+            <version>0.3.0-RELEASE</version>
         </dependency>
 
         <dependency>
