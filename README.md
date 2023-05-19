@@ -25,7 +25,7 @@ You will get spring shell:
 shell:>
 ```
 
-Now, server your first node by entering the shell command `serve` and pass id, host and port of the current machine:
+Now, serve (start) your first node by entering the shell command `serve` and pass id, host and port of the current machine:
 
 ```
 shell:> serve --id 1 --host 127.0.0.1 --port 8001
@@ -49,7 +49,7 @@ Format of bootstrap node data is: `id:host:port`.
 
 ### Store and lookup
 
-After running your nodes, you can start storing and looking up for data:
+After running your nodes, you can start storing and looking up for data in any of the machines:
 
 ```
 shell:> store key value
